@@ -36,7 +36,7 @@ class App extends React.Component {
             <div id="frame">
               <img style={{ top: `${level}%` }} src={require('./water.png')} /><img style={{ top: `${level}%` }} src={require('./water.png')} />
             </div>
-            <img id="ruler" src="/alert.mp3" />
+            <img id="ruler" src={require('./ruler.png')} />
           </div>
           <div className={`temperature ${parseFloat(temp) > 36.9 ? 'warn' : ''}`}>
             {temp}°C
