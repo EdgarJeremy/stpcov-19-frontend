@@ -10,8 +10,14 @@ class App extends React.Component {
     distance: ''
   }
   componentDidMount() {
+    const sfx = new Audio('./alert.mp3');
     socket.on('connect', () => {
       socket.on('update', (data) => {
+        if (data.temp > 36.9) {
+          sfx.play();
+        } else {
+          sfx.pause();
+        }
         this.setState(data);
       })
     });
@@ -30,9 +36,13 @@ class App extends React.Component {
             <div id="frame">
               <img style={{ top: `${level}%` }} src={require('./water.png')} /><img style={{ top: `${level}%` }} src={require('./water.png')} />
             </div>
+            <img id="ruler" src={require('./ruler.png')} />
           </div>
-          <div className="temperature">
+          <div className={`temperature ${parseFloat(temp) > 36.9 ? 'warn' : ''}`}>
             {temp}°C
+          <div className={`caution ${parseFloat(temp) > 36.9 ? 'warn' : ''}`}>
+              Segera periksakan diri anda ke dokter karena anda berpotensi terkena covid-19
+          </div>
           </div>
         </div>
       </div>

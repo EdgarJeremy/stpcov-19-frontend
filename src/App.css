@@ -56,9 +56,23 @@ body{
   position: relative;
 }
 
+.water-level #ruler {
+  position: absolute;
+  right: -45px;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+}
+
 .temperature {
   float: right;
   font-size: 150px;
+}
+
+.temperature .caution {
+  width: 300px;
+  font-size: 20px !important;
+  text-align: center;
 }
 
 #frame {
@@ -110,4 +124,8 @@ body{
   100% {
     transform: translateX(0%);
   }
+}
+
+.warn {
+  color: red !important;
 }
