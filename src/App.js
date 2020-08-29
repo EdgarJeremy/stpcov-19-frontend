@@ -40,9 +40,11 @@ class App extends React.Component {
           </div>
           <div className={`temperature ${parseFloat(temp) > 36.9 ? 'warn' : ''}`}>
             {temp}°C
-          <div className={`caution ${parseFloat(temp) > 36.9 ? 'warn' : ''}`}>
-              Segera periksakan diri anda ke dokter karena anda berpotensi terkena covid-19
-          </div>
+          {parseFloat(temp > 36.9) && (
+              <div className={`caution warn`}>
+                Segera periksakan diri anda ke dokter karena anda berpotensi terkena covid-19
+              </div>
+            )}
           </div>
         </div>
       </div>
